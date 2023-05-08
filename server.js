@@ -17,5 +17,12 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     const loginBody = req.body;
     const userName = loginBody.userName;
-    res.send(`Welcome, ${userName}!`);
+    const password = loginBody.password;
+
+    if (password === "Orange20!") {
+        res.send(`Welcome, ${userName}!`);
+    } else {
+        res.status(401);
+        res.send("Incorrect password.");
+    }
 });
