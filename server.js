@@ -14,3 +14,8 @@ app.get('/', (req, res) => {
     res.send("Node Server is here");
 });
 
+app.post('/login', (req, res) => {
+    const loginBody = req.body;
+    const userName = loginBody.userName;
+    res.send(`Welcome, ${userName}!`);
+});
