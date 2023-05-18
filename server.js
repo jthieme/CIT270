@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const Redis = require("redis");
-
+const {createHash} = require("crypto");
+// import { createHash } from "crypto";
 const app = express();
 const port = 3000;
 
@@ -28,11 +29,11 @@ app.post('/login', async (req, res) => {
     const loginBody = req.body;
     const userName = loginBody.userName;
     const password = loginBody.password;
-    
-    const redisPassword = await redisClient.hGet("users", userName);
+    const hashPassword = createHash("sha3-256").update(password).digest("hex");
+    const redisPassword = await redisClient.hGet("hashedPasswords", userName);
     console.log(`password for ${userName}: ${redisPassword}`);
 
-    if (redisPassword != null && password === redisPassword) {
+    if (redisPassword != null && hashPassword === redisPassword) {
         res.send(`Welcome, ${userName}!`);
     } else {
         res.status(401);
