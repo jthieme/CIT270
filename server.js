@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const Redis = require("redis");
 const {createHash} = require("crypto");
-// import { createHash } from "crypto";
 const app = express();
 const port = 3000;
 
