@@ -28,8 +28,10 @@ app.post('/login', async (req, res) => {
     const loginBody = req.body;
     const userName = loginBody.userName;
     const password = loginBody.password;
-    const hashPassword = createHash("sha3-256").update(password).digest("hex");
-    const redisPassword = await redisClient.hGet("hashedPasswords", userName);
+
+    const hashPassword = password === null ? null : createHash("sha3-256").update(password).digest("hex");
+    const redisPassword = password === null ? null : await redisClient.hGet("hashedPasswords", userName);
+    
     console.log(`password for ${userName}: ${redisPassword}`);
 
     if (redisPassword != null && hashPassword === redisPassword) {
