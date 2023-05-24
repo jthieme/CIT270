@@ -12,16 +12,6 @@ const redisConnect = redisClient.connect();
 
 app.use(bodyParser.json());
 
-// app.listen(port, () => {
-//     redisConnect;
-
-//     // ternary expression to log if we are connected or not
-//     redisConnect ? 
-//         console.log(`You're connected to Redis!\nListening on port ${port}`)
-//     :   console.log("Sorry, you're not connected to Redis")
-     
-// });
-
 https.createServer({
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.cert')
