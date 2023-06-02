@@ -13,8 +13,11 @@ const redisConnect = redisClient.connect();
 app.use(bodyParser.json());
 
 https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
+    // key: fs.readFileSync('server.key'),
+    // cert: fs.readFileSync('server.cert'),
+    key: fs.readFileSync('privkey1.pem'),
+    cert: fs.readFileSync('cert1.pem'),
+    chain: fs.readFileSync('fullchain1.pem')
   }, app).listen(port, () => {
     redisConnect;
 
