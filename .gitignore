@@ -2,3 +2,7 @@ login.json
 node_modules
 server.key
 server.cert
+
+cert1.pem
+fullchain1.pem
+privkey1.pem
