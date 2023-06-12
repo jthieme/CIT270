@@ -4,3 +4,4 @@ server.key
 server.cert
 
 *.pem
+package-lock.json
