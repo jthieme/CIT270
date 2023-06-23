@@ -4,10 +4,10 @@ COPY package.json ./
 
 COPY server.js ./
 
-# the below command is what happens when you build the image
+# installs the current packages
 RUN npm install
 
 EXPOSE 3000
 
-# the below command is what happens when you run the container
+# this happens after the container starts
 CMD ["node", "server.js"]

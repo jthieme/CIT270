@@ -12,18 +12,25 @@ const redisConnect = redisClient.connect();
 
 app.use(bodyParser.json());
 
-https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/privkey1.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/cert1.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/chain1.pem')
-  }, app).listen(port, () => {
-    redisConnect;
-
+app.listen(port, () => {
     // ternary expression to log if we are connected or not
     redisConnect ? 
         console.log(`You're connected to Redis!\nListening on port ${port}`)
     :   console.log("Sorry, you're not connected to Redis")
-  })
+});
+
+// https.createServer({
+//     key: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/privkey1.pem'),
+//     cert: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/cert1.pem'),
+//     ca: fs.readFileSync('/etc/letsencrypt/archive/joshthieme.cit270.com/chain1.pem')
+//   }, app).listen(port, () => {
+//     redisConnect;
+
+//     // ternary expression to log if we are connected or not
+//     redisConnect ? 
+//         console.log(`You're connected to Redis!\nListening on port ${port}`)
+//     :   console.log("Sorry, you're not connected to Redis")
+//   })
 
 app.get('/', (req, res) => {
     res.send("Node Server is here");
