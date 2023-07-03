@@ -58,7 +58,7 @@ spec:
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: stedi-josh-certificate
+  name: stedi-josh-certificate2
 spec:
   domains:
     - joshthieme.cit270.com # this needs to be your domain name from DNS
@@ -66,10 +66,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: stedi-josh-ingress
+  name: stedi-josh-ingress2
   annotations:
   # Use this command to find the address name: gcloud compute addresses list 
-    kubernetes.io/ingress.global-static-ip-name: cit270josh
+    kubernetes.io/ingress.global-static-ip-name: cit270josh2
   # needs to match the name of the ManagedCertificate (line 75)
     networking.gke.io/managed-certificates: stedi-josh-certificate
 spec:
